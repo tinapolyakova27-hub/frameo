@@ -5351,6 +5351,166 @@ img { max-width: 100% !important; }
 }
 /* ── END FRAMEO MOBILE 480px v2 ── */
 
+
+
+/* ── FRAMEO MOBILE CLEANUP PATCH v1 ── */
+@media (max-width: 480px) {
+
+/* 1. HEADER — fix double-padding (wrap had 32px + nav-inner had 32px = 64px total) */
+header#hdr .wrap {
+  padding: 0 !important;
+  padding-inline: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+/* nav-inner is the actual container — 32px each side is the only padding */
+.nav-inner {
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+}
+
+/* 2. BEIGE STRIP below hero — desktop sets padding-top: 124px, override it */
+.about-editorial {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+/* First content div padding compensates for section spacing */
+.about-editorial > div:first-child > div:first-child {
+  padding-top: 80px !important;
+}
+
+/* 3. SECTION SPACING — all main sections get 80px top spacing */
+.mc-sec {
+  padding-top: 80px !important;
+}
+.mc-header {
+  padding-top: 0 !important;
+  padding-bottom: 16px !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+}
+.feat-sec {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.feat-layout-v2 {
+  padding-top: 80px !important;
+  padding-bottom: 60px !important;
+  padding-left: 32px !important;
+  padding-right: 32px !important;
+}
+/* feat-hdr: stack eyebrow+heading above CTA button, 32px grid */
+.feat-hdr {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 20px !important;
+  margin-bottom: 28px !important;
+  padding: 0 !important;
+}
+.feat-hdr-left {
+  width: 100% !important;
+}
+.feat-title-new {
+  font-size: clamp(1.8rem, 8vw, 2.8rem) !important;
+  line-height: 1.05 !important;
+}
+/* feat-grid: remove the extra 32px padding since feat-layout-v2 already has it */
+.feat-grid-v2 {
+  padding: 0 !important;
+}
+/* feat-card: reset flex shorthand that comes from 768px block (flex: 0 0 200px forces height) */
+.feat-grid-v2 .feat-card {
+  flex: none !important;
+  height: 160px !important;
+}
+
+.proc-sec {
+  padding-top: 80px !important;
+  padding-bottom: 60px !important;
+}
+.deliv-editorial {
+  padding-top: 0 !important;
+}
+.de-top {
+  padding-top: 80px !important;
+}
+.rev-sec {
+  padding-top: 80px !important;
+  padding-bottom: 60px !important;
+}
+.faq2-sec {
+  padding-top: 80px !important;
+  padding-bottom: 60px !important;
+}
+.cont3-sec {
+  padding-top: 0 !important;
+}
+.cont3-content {
+  padding-top: 80px !important;
+}
+
+/* 4. GLOBAL EYEBROW MARGIN — V72 rule sets 24px, reduce to 10px on mobile */
+.mc-header-eyebrow,
+.mc-eyebrow,
+.de-eyebrow,
+.proc-eyebrow,
+.rev-eyebrow,
+.feat-eyebrow-new,
+.faq2-head .eyebrow,
+.eyebrow,
+[class*="-eyebrow"] {
+  margin-bottom: 10px !important;
+}
+
+/* 5. CONFIGURATOR IMAGE — align with heading (32px from edges), 24px radius */
+.mc-left {
+  margin: 0 32px !important;
+  border-radius: 24px !important;
+  width: calc(100% - 64px) !important;
+  max-height: 280px !important;
+  min-height: 220px !important;
+}
+/* Reduce image-to-SIZE block gap */
+.mc-right {
+  padding-top: 12px !important;
+}
+
+/* 6. REVIEWS — photo border-radius 24px, compact card spacing */
+.rev-card-photo {
+  border-radius: 24px !important;
+}
+.rev-card {
+  padding: 16px !important;
+  gap: 12px !important;
+}
+/* Equal centering for photo within card */
+.rev-card-photo {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  width: 100% !important;
+}
+/* Review card spacing per spec: 24px top-to-image, 24px image-to-text, 24-32px to author */
+.rev-quote {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+.rev-meta {
+  margin-top: auto !important;
+}
+
+/* 7. RADIUS CONSISTENCY — 24px on all rectangular cards */
+.feat-card { border-radius: 24px !important; }
+.proc-step { border-radius: 24px !important; }
+.rev-card { border-radius: 24px !important; }
+.ab-carousel { border-radius: 24px !important; }
+.de-photo-main { border-radius: 24px !important; }
+/* Keep circles circular */
+.rev-avatar,
+.faq2-plus { border-radius: 50% !important; }
+
+}
+/* ── END FRAMEO MOBILE CLEANUP PATCH v1 ── */
 </style>
 
 <!-- ── HEADER ── -->
