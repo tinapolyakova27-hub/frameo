@@ -4759,6 +4759,14 @@ a, button { transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease
     flex-wrap: nowrap !important;
   }
 
+
+  /* Hide native iOS video play overlay */
+  #hero-video::-webkit-media-controls,
+  #hero-video::-webkit-media-controls-start-playback-button,
+  #hero-video::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+    -webkit-appearance: none;
+  }
   /* ── 5. HERO: mobile layout ── */
   #hero-scroll-wrapper { height: 100svh !important; }
   .hero-brand-center { display: none !important; }
@@ -4766,12 +4774,16 @@ a, button { transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease
   .hero-bottom-center { display: none !important; }
   .hero-stats-right { display: none !important; }
   .hero-bottom-bar {
-    left: 32px !important;
-    right: 32px !important;
-    bottom: 48px !important;
-    width: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 33px !important;
+    width: 100% !important;
     align-items: flex-start !important;
     opacity: 1 !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
   .hero-title-block {
     display: flex !important;
@@ -6321,6 +6333,10 @@ document.addEventListener('keydown', function(e) {
       video.loop = true;
       video.muted = true;
       video.play().catch(function(){});
+      /* iOS fallback: play on first touch if autoplay blocked */
+      document.addEventListener('touchstart', function() {
+        if (video.paused) video.play().catch(function(){});
+      }, { once: true });
     }
     /* Hero content visible immediately */
     var bottomBar = document.querySelector('.hero-bottom-bar');
