@@ -4780,8 +4780,8 @@ a, button { transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease
     width: 100% !important;
     align-items: flex-start !important;
     opacity: 1 !important;
-    padding-left: 24px !important;
-    padding-right: 24px !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
   }
@@ -4814,6 +4814,506 @@ a, button { transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease
     pointer-events: auto !important;
   }
 }
+
+/* ══════════════════════════════════════════════════════
+   FRAMEO — COMPREHENSIVE MOBILE FRONTEND  max-width:480px
+   32px horizontal grid on ALL sections
+   Desktop (481px+) is COMPLETELY UNCHANGED
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+  /* ─────────────────────────────────────────
+     0. GLOBAL BASE
+  ───────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box !important; }
+  body { overflow-x: hidden !important; }
+
+  /* Global .wrap override — consistent 32px gutter */
+  .wrap { padding-inline: 32px !important; }
+
+  /* ─────────────────────────────────────────
+     1. HEADER
+  ───────────────────────────────────────── */
+  header#hdr {
+    padding: 20px 0 0 !important;
+    background: transparent !important;
+  }
+  header#hdr .wrap,
+  header#hdr .nav-inner {
+    padding-inline: 32px !important;
+  }
+  .nav-inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+  }
+  .nav-links { display: none !important; }
+  .nav-cta   { display: none !important; }
+  .hamburger {
+    display: flex !important;
+    border: none !important;
+    background: none !important;
+  }
+  .logo img { height: 28px !important; width: auto !important; }
+
+  /* ─────────────────────────────────────────
+     2. HERO  (video, headline, CTA)
+  ───────────────────────────────────────── */
+  /* iOS — suppress native play button overlay */
+  #hero-video::-webkit-media-controls,
+  #hero-video::-webkit-media-controls-start-playback-button,
+  #hero-video::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+    opacity: 0 !important;
+    -webkit-appearance: none !important;
+  }
+  /* video fills viewport, no scroll wrapper */
+  #hero-scroll-wrapper {
+    height: 100svh !important;
+    height: 100vh !important;
+  }
+  .hero-section,
+  section.hero {
+    height: 100svh !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+  #hero-video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  /* Hide all desktop decorative elements */
+  .hero-brand-center  { display: none !important; }
+  .hero-col-left      { display: none !important; }
+  .hero-col-right     { display: none !important; }
+  .hero-bottom-center { display: none !important; }
+  .hero-stats-right   { display: none !important; }
+  /* Bottom bar — text starts at 32px, same as logo */
+  .hero-bottom-bar {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 40px !important;
+    width: 100% !important;
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    align-items: flex-start !important;
+    opacity: 1 !important;
+  }
+  .hero-title-block {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 6px !important;
+  }
+  .hero-title-eyebrow {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.14em !important;
+    margin-bottom: 6px !important;
+    opacity: 1 !important;
+  }
+  .hero-title-line1,
+  .hero-title-line2 {
+    font-size: clamp(2.6rem, 11vw, 4.5rem) !important;
+    line-height: 0.93 !important;
+    display: block !important;
+    opacity: 1 !important;
+  }
+  .hero-line2-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+    margin-top: 0 !important;
+  }
+  .hero-cta-pill {
+    margin-top: 4px !important;
+    pointer-events: auto !important;
+    font-size: 0.75rem !important;
+    padding: 10px 22px !important;
+  }
+
+  /* ─────────────────────────────────────────
+     3. ABOUT-EDITORIAL  (intro + project carousel)
+  ───────────────────────────────────────── */
+  .about-editorial {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  /* Override the inline-style grid columns */
+  .about-editorial > div:first-child {
+    display: block !important;
+    grid-template-columns: unset !important;
+    padding: 0 !important;
+  }
+  /* Text block inside the grid */
+  .about-editorial > div:first-child > div:first-child {
+    padding: 48px 32px 24px !important;
+    box-sizing: border-box !important;
+  }
+  /* Hide the side column (decorative) on mobile */
+  .about-editorial > div:first-child > div:last-child {
+    display: none !important;
+  }
+  /* Carousel container block */
+  .about-editorial > div:last-child {
+    padding: 0 32px 48px !important;
+    box-sizing: border-box !important;
+  }
+  .ab-carousel {
+    aspect-ratio: unset !important;
+    height: 280px !important;
+    border-radius: 20px !important;
+  }
+  /* About text */
+  .about-editorial p[style] {
+    font-size: clamp(1.8rem, 8vw, 2.8rem) !important;
+    line-height: 1.1 !important;
+  }
+
+  /* ─────────────────────────────────────────
+     4. MODELS SECTION  (mc-sec)
+  ───────────────────────────────────────── */
+  .mc-sec { padding: 0 0 48px !important; }
+  .mc-header {
+    padding: 48px 32px 32px !important;
+  }
+  .mc-header-title {
+    font-size: clamp(2.2rem, 10vw, 3.5rem) !important;
+    line-height: 1 !important;
+  }
+  /* Models grid → horizontal scroll strip */
+  .mc-grid,
+  .mc-list {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 16px !important;
+    padding: 0 32px 16px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .mc-grid::-webkit-scrollbar,
+  .mc-list::-webkit-scrollbar { display: none !important; }
+  .mc-card {
+    flex: 0 0 80vw !important;
+    min-width: 260px !important;
+    scroll-snap-align: start !important;
+  }
+
+  /* ─────────────────────────────────────────
+     5. FEATURES / ADVANTAGES  (feat-sec)
+  ───────────────────────────────────────── */
+  .feat-sec { padding: 48px 0 !important; }
+  .feat-sec .wrap,
+  .feat-sec .feat-inner {
+    padding-inline: 32px !important;
+  }
+  .feat-sec-head,
+  .feat-head {
+    padding: 0 32px 32px !important;
+    display: block !important;
+  }
+  .feat-sec-title,
+  .feat-head-title {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+  }
+  /* Grid → vertical stack */
+  .feat-grid-v2 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    padding: 0 32px !important;
+  }
+  .feat-grid-v2 .feat-card {
+    width: 100% !important;
+    min-height: unset !important;
+    height: auto !important;
+    border-radius: 16px !important;
+  }
+  .feat-grid-v2 .feat-card-img {
+    width: 100% !important;
+    aspect-ratio: 16/9 !important;
+    height: auto !important;
+    object-fit: cover !important;
+  }
+  /* Old scroll-based feat-layout already hidden via desktop rule */
+
+  /* ─────────────────────────────────────────
+     6. PROCESS / HOW TO ORDER  (proc-sec)
+  ───────────────────────────────────────── */
+  .proc-sec { padding: 48px 0 !important; }
+  .proc-inner {
+    max-width: 100% !important;
+    padding: 0 32px !important;
+  }
+  /* Header area */
+  .proc-head {
+    display: block !important;
+    margin-bottom: 32px !important;
+  }
+  .proc-head-title {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+    margin-bottom: 12px !important;
+  }
+  .proc-head-sub { font-size: 0.9rem !important; }
+  /* Steps: wide HORIZONTAL cards (image left + text right) */
+  .proc-steps {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+    grid-template-columns: unset !important;
+  }
+  .proc-step {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: stretch !important;
+    width: 100% !important;
+    background: #F9F7F3 !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    text-align: left !important;
+    min-height: 120px !important;
+  }
+  /* Image on the LEFT, fixed width */
+  .proc-step-img {
+    flex: 0 0 120px !important;
+    width: 120px !important;
+    height: auto !important;
+    min-height: 120px !important;
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+    overflow: hidden !important;
+    order: 0 !important;
+  }
+  .proc-step-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  /* Text block on the RIGHT */
+  .proc-step-body,
+  .proc-step > *:not(.proc-step-img):not(.proc-num) {
+    flex: 1 !important;
+    padding: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    order: 1 !important;
+  }
+  .proc-num {
+    font-size: 1.4rem !important;
+    color: #D0CBBD !important;
+    margin-bottom: 4px !important;
+    order: 0 !important;
+  }
+  .proc-step-title {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 4px !important;
+  }
+  .proc-step-desc {
+    font-size: 0.78rem !important;
+    line-height: 1.4 !important;
+    opacity: 0.75 !important;
+  }
+
+  /* ─────────────────────────────────────────
+     7. REVIEWS  (rev-sec) — one-card carousel
+  ───────────────────────────────────────── */
+  .rev-sec { padding: 48px 0 !important; }
+  .rev-inner {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .rev-head {
+    padding: 0 32px !important;
+    margin-bottom: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+  }
+  .rev-head-title {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+  }
+  /* Horizontal one-card-at-a-time carousel */
+  .rev-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: scroll !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 16px !important;
+    padding: 0 32px 24px !important;
+    grid-template-columns: unset !important;
+  }
+  .rev-grid::-webkit-scrollbar { display: none !important; }
+  .rev-card {
+    flex: 0 0 calc(100vw - 64px) !important;
+    width: calc(100vw - 64px) !important;
+    min-width: unset !important;
+    max-width: unset !important;
+    scroll-snap-align: center !important;
+    border-radius: 24px !important;
+    padding: 24px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  .rev-card-photo {
+    width: 100% !important;
+    aspect-ratio: 4/3 !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+  .rev-card-photo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+  .rev-card-text { font-size: 0.88rem !important; line-height: 1.55 !important; }
+  .rev-card-author { font-size: 0.8rem !important; }
+
+  /* ─────────────────────────────────────────
+     8. DELIVERY EDITORIAL  (deliv-editorial)
+  ───────────────────────────────────────── */
+  .deliv-editorial {
+    display: block !important;
+    padding: 48px 32px !important;
+  }
+  .deliv-editorial > * {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  .deliv-title {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+    margin-bottom: 16px !important;
+  }
+  .deliv-img,
+  .deliv-editorial img {
+    width: 100% !important;
+    aspect-ratio: 4/3 !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+    margin-top: 24px !important;
+  }
+
+  /* ─────────────────────────────────────────
+     9. CONTACT  (cont3-sec)
+  ───────────────────────────────────────── */
+  .cont3-photo { display: none !important; }
+  .cont3-sec {
+    display: block !important;
+    min-height: unset !important;
+  }
+  .cont3-content {
+    padding: 48px 32px 56px !important;
+    gap: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .cont3-top {
+    display: block !important;
+    margin-bottom: 20px !important;
+  }
+  .cont3-title {
+    font-size: clamp(2rem, 9vw, 3rem) !important;
+    margin-bottom: 12px !important;
+  }
+  .cont3-sub {
+    font-size: 0.9rem !important;
+    margin-bottom: 24px !important;
+    display: block !important;
+  }
+  .cont3-cols {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+  .cont3-submit { justify-content: flex-start !important; }
+  .cont3-field {
+    width: 100% !important;
+    font-size: 1rem !important;
+  }
+
+  /* ─────────────────────────────────────────
+     10. FOOTER
+  ───────────────────────────────────────── */
+  .footer-v2,
+  footer {
+    padding: 40px 32px 32px !important;
+  }
+  .footer-v2-inner,
+  .footer-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    padding: 0 !important;
+  }
+  .footer-v2-icons {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px !important;
+    flex-wrap: nowrap !important;
+  }
+  .footer-v2-logo img { height: 24px !important; }
+  .footer-v2-copy { font-size: 0.7rem !important; }
+
+  /* ─────────────────────────────────────────
+     11. TYPOGRAPHY SCALE  (global mobile)
+  ───────────────────────────────────────── */
+  /* Section eyebrows */
+  .eyebrow,
+  .mc-header-eyebrow,
+  .proc-eyebrow,
+  .rev-eyebrow,
+  [class*="-eyebrow"] {
+    font-size: 0.65rem !important;
+    letter-spacing: 0.14em !important;
+  }
+  /* Section headlines */
+  .mc-header-title,
+  .proc-head-title,
+  .rev-head-title {
+    font-size: clamp(2.2rem, 10vw, 3.5rem) !important;
+    line-height: 1 !important;
+  }
+  /* Body copy */
+  p, li { font-size: 0.875rem !important; line-height: 1.6 !important; }
+
+  /* ─────────────────────────────────────────
+     12. IMAGES — no overflow, rounded corners
+  ───────────────────────────────────────── */
+  img { max-width: 100% !important; height: auto !important; }
+  /* All section images get consistent rounding */
+  .mc-card img,
+  .feat-card img,
+  .rev-card img { border-radius: 12px !important; }
+
+  /* ─────────────────────────────────────────
+     13. SPACING — prevent section overflow
+  ───────────────────────────────────────── */
+  section, .sec { overflow-x: hidden !important; }
+
+}
+/* ── END FRAMEO MOBILE 480px ── */
 </style>
 
 <!-- ── HEADER ── -->
