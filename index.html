@@ -4584,7 +4584,7 @@ a, button { transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease
 .mob-cta-btn:hover { opacity: .88 !important; }
 
 /* Hamburger: only show on mobile */
-.hamburger { display: none; background: none; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; cursor: pointer; }
+.hamburger { display: none; background: none; border: none; cursor: pointer; }
 @media (max-width: 768px) {
   .hamburger { display: flex; width: 40px; height: 40px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
   .hamburger span { display: block; width: 18px; height: 1.5px; background: #fff; transition: all .3s; }
@@ -4758,6 +4758,49 @@ a, button { transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease
     gap: 10px !important;
     flex-wrap: nowrap !important;
   }
+
+  /* ── 5. HERO: mobile layout ── */
+  #hero-scroll-wrapper { height: 100svh !important; }
+  .hero-brand-center { display: none !important; }
+  .hero-col-left, .hero-col-right { display: none !important; }
+  .hero-bottom-center { display: none !important; }
+  .hero-stats-right { display: none !important; }
+  .hero-bottom-bar {
+    left: 32px !important;
+    right: 32px !important;
+    bottom: 48px !important;
+    width: auto !important;
+    align-items: flex-start !important;
+    opacity: 1 !important;
+  }
+  .hero-title-block {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+  }
+  .hero-title-eyebrow {
+    font-size: 0.7rem !important;
+    letter-spacing: 0.12em !important;
+    margin-bottom: 4px !important;
+    opacity: 1 !important;
+  }
+  .hero-title-line1, .hero-title-line2 {
+    font-size: clamp(2.8rem, 10vw, 5rem) !important;
+    line-height: 0.95 !important;
+    display: block !important;
+    opacity: 1 !important;
+  }
+  .hero-line2-row {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+  .hero-line2-row .hero-cta-pill {
+    margin-top: 4px !important;
+    pointer-events: auto !important;
+  }
 }
 </style>
 
@@ -4813,7 +4856,7 @@ a, button { transition: opacity 0.2s ease, color 0.2s ease, background 0.2s ease
 <div id="hero-scroll-wrapper" style="height:550vh;position:relative;">
 <section class="hero" id="home" style="position:sticky;top:0;">
   
-  <video id="hero-video" src="hero.mp4" preload="auto" muted playsinline></video>
+  <video id="hero-video" src="hero.mp4" preload="auto" autoplay loop muted playsinline></video>
   <div class="hero-overlay"></div>
 
   <div class="hero-brand-center" aria-hidden="true">
