@@ -34,9 +34,9 @@ setLang(currentLang);
 
 // ─── Theme toggle ────────────────────────────────────────────────────────────
 // ─── Nav scroll effect ────────────────────────────────────────────────────────
-const nav = document.querySelector('.nav');
+const nav = document.getElementById('hdr');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+  if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
 }, {passive:true});
 
 // ─── Mobile menu ─────────────────────────────────────────────────────────────
@@ -95,20 +95,23 @@ document.querySelectorAll('.faq-q').forEach(btn => {
 });
 
 // ─── Contact form ─────────────────────────────────────────────────────────────
-document.getElementById('contactForm').addEventListener('submit', e => {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('.form-submit');
-  btn.disabled = true;
-  btn.style.opacity = '.6';
-  setTimeout(() => {
-    form.reset();
-    document.getElementById('formSuccess').style.display = 'block';
-    btn.disabled = false;
-    btn.style.opacity = '1';
-    setTimeout(() => { document.getElementById('formSuccess').style.display = 'none'; }, 5000);
-  }, 800);
-});
+const legacyContactForm = document.getElementById('contactForm');
+if (legacyContactForm) {
+  legacyContactForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const form = e.target;
+    const btn = form.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.style.opacity = '.6';
+    setTimeout(() => {
+      form.reset();
+      document.getElementById('formSuccess').style.display = 'block';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      setTimeout(() => { document.getElementById('formSuccess').style.display = 'none'; }, 5000);
+    }, 800);
+  });
+}
 
 // ─── Smooth scroll for anchor links ──────────────────────────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -696,7 +699,8 @@ document.addEventListener('keydown', function(e) {
 (function() {
   'use strict';
   var video = document.getElementById('hero-video');
-  var isMobile = window.innerWidth <= 768;
+  var isMobile = window.matchMedia('(max-width: 768px)').matches;
+  document.documentElement.classList.add(isMobile ? 'hero-autoplay-mobile' : 'hero-scroll-desktop');
 
   /* Fade video in once it has enough data */
   if (video) {
@@ -714,7 +718,13 @@ document.addEventListener('keydown', function(e) {
     if (video) {
       video.loop = true;
       video.muted = true;
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
       video.play().catch(function(){});
+      video.addEventListener('canplay', function() {
+        video.play().catch(function(){});
+      }, { once: true });
       /* iOS fallback: play on first touch if autoplay blocked */
       document.addEventListener('touchstart', function() {
         if (video.paused) video.play().catch(function(){});
@@ -727,6 +737,24 @@ document.addEventListener('keydown', function(e) {
   }
 
   /* ── DESKTOP: scroll-driven scrubbing ── */
+  if (video) {
+    /* Browsers may restore media playback when a tab resumes or the viewport
+       changes. On desktop the frame must only be controlled by scroll. */
+    video.autoplay = false;
+    video.removeAttribute('autoplay');
+    video.loop = false;
+    video.pause();
+
+    function lockDesktopPlayback() {
+      if (!window.matchMedia('(max-width: 768px)').matches && !video.paused) {
+        video.pause();
+      }
+    }
+
+    video.addEventListener('play', lockDesktopPlayback);
+    window.addEventListener('resize', lockDesktopPlayback);
+    document.addEventListener('visibilitychange', lockDesktopPlayback);
+  }
   var wrapperTop = 0, wrapperScrollable = 1;
 
   function cacheWrapper() {
@@ -747,30 +775,46 @@ document.addEventListener('keydown', function(e) {
     return Math.max(0, Math.min(1, (p - start) / range));
   }
 
-  var lastScrollY = -1;
-  function loop() {
-    var scrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
-    if (scrollY !== lastScrollY) {
-      lastScrollY = scrollY;
-      var p = getProgress();
-      if (video && video.readyState >= 2 && video.duration) {
-        video.currentTime = p * video.duration;
+  function renderHeroFrame() {
+    var p = getProgress();
+    if (video && video.readyState >= 2 && video.duration) {
+      video.pause();
+      var targetTime = p * video.duration;
+      if (Math.abs(video.currentTime - targetTime) > 0.01) {
+        video.currentTime = targetTime;
       }
-      var brandCenter = document.querySelector('.hero-brand-center');
-      var bottomBar   = document.querySelector('.hero-bottom-bar');
-      if (brandCenter) brandCenter.style.opacity = fadeAt(p, 0.15, 0.18);
-      if (bottomBar)   bottomBar.style.opacity   = fadeAt(p, 0.38, 0.22);
     }
-    requestAnimationFrame(loop);
+    var brandCenter = document.querySelector('.hero-brand-center');
+    var bottomBar   = document.querySelector('.hero-bottom-bar');
+    if (brandCenter) brandCenter.style.setProperty('opacity', fadeAt(p, 0.15, 0.18), 'important');
+    if (bottomBar)   bottomBar.style.setProperty('opacity', fadeAt(p, 0.38, 0.22), 'important');
   }
 
-  window.addEventListener('resize', cacheWrapper);
+  var scrollTicking = false;
+  function onHeroScroll() {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(function() {
+      renderHeroFrame();
+      scrollTicking = false;
+    });
+  }
+
+  window.addEventListener('scroll', onHeroScroll, { passive: true });
+  window.addEventListener('resize', function() {
+    cacheWrapper();
+    renderHeroFrame();
+  });
+  if (video) {
+    video.addEventListener('loadedmetadata', renderHeroFrame);
+    video.addEventListener('canplay', renderHeroFrame);
+  }
 
   function init() {
     var wr = document.getElementById('hero-scroll-wrapper');
     if (wr) wr.style.height = '550vh';
     cacheWrapper();
-    requestAnimationFrame(loop);
+    renderHeroFrame();
   }
 
   if (document.readyState === 'loading') {
