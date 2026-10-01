@@ -46,8 +46,8 @@
     body{background:var(--bg);color:var(--cream);font-family:'Jost',sans-serif;overflow-x:hidden}
   </style>
   <link rel="preload" href="assets/css/style.css" as="style">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <script src="assets/js/main.js" defer></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=20260930-gallery-glass-v13">
+  <script src="assets/js/main.js?v=20261001-full-mobile-v9" defer></script>
 </head><body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,14 +98,13 @@
   <a href="#reviews"  onclick="closeMob()" data-i18n="nav_reviews">Reviews</a>
   <a href="#faq"      onclick="closeMob()" data-i18n="nav_faq">FAQ</a>
   <a href="#contact"  onclick="closeMob()" data-i18n="nav_contacts">Contact</a>
-  <a href="#contact"  onclick="closeMob()" class="mob-cta-btn" data-i18n="mob_cta">Get a Quote</a>
 </nav>
 
 <!-- ── HERO ── -->
 <div id="hero-scroll-wrapper" style="height:550vh;position:relative;">
 <section class="hero" id="home" style="position:sticky;top:0;">
   
-  <video id="hero-video" src="hero.mp4" preload="auto" autoplay loop muted playsinline></video>
+  <video id="hero-video" src="hero.mp4" preload="auto" muted playsinline></video>
   <div class="hero-overlay"></div>
 
   <div class="hero-brand-center" aria-hidden="true">
@@ -732,7 +731,10 @@
 
     <!-- Top row: heading + description -->
     <div class="cont3-top">
-      <h2 class="cont3-title" data-i18n="contact_title">Contact</h2>
+      <div class="cont3-heading">
+        <div class="cont3-eyebrow">Start your project</div>
+        <h2 class="cont3-title" data-i18n="contact_title">Contact</h2>
+      </div>
       <p class="cont3-sub" data-i18n="contact_sub">Leave a request — our manager will clarify the details and prepare a personalised quote for your plot and budget within 24 hours.</p>
     </div>
 
@@ -804,7 +806,7 @@
 
     <!-- big logo -->
     <div class="footer-v2-logo-wrap">
-      <img loading="lazy" decoding="async" class="footer-v2-logo" src="assets/images/img-29.png" alt="SiberianFrame">
+      <img loading="lazy" decoding="async" class="footer-v2-logo" src="assets/images/img-29.png" width="404" height="80" alt="SiberianFrame">
     </div>
 
     <!-- bottom bar -->
