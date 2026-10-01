@@ -5535,3 +5535,467 @@ header#hdr .wrap {
 
 }
 /* ── END FRAMEO CONFIG GRID FIX v2 ── */
+
+
+/* ── FRAMEO MOBILE FINAL LAYOUT FIX ── */
+@media (max-width: 600px) {
+  /* How to order: make every card a true horizontal split card. */
+  .feat-layout-v2 {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+
+  .feat-grid-v2 {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    padding: 0 !important;
+  }
+
+  .feat-grid-v2 .feat-card {
+    display: grid !important;
+    grid-template-columns: 38% minmax(0, 1fr) !important;
+    gap: 16px !important;
+    width: 100% !important;
+    height: 184px !important;
+    min-height: 184px !important;
+    flex: none !important;
+    padding: 16px !important;
+    background: #FFFFFF !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+  }
+
+  .feat-grid-v2 .feat-card-img {
+    position: relative !important;
+    inset: auto !important;
+    grid-column: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 0 !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+    transform: none !important;
+  }
+
+  .feat-grid-v2 .feat-card-overlay,
+  .feat-grid-v2 .feat-card-num {
+    display: none !important;
+  }
+
+  .feat-grid-v2 .feat-card-content {
+    position: relative !important;
+    inset: auto !important;
+    grid-column: 2 !important;
+    min-width: 0 !important;
+    height: 100% !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+
+  .feat-grid-v2 .feat-card-title {
+    margin: 0 0 5px !important;
+    font-size: 1.12rem !important;
+    line-height: 1.05 !important;
+    color: #14190F !important;
+  }
+
+  .feat-grid-v2 .feat-card-eyebrow {
+    margin: 0 !important;
+    font-size: .58rem !important;
+    line-height: 1.2 !important;
+    color: #8A621E !important;
+  }
+
+  .feat-grid-v2 .feat-card-desc {
+    margin: 0 !important;
+    font-size: .69rem !important;
+    line-height: 1.42 !important;
+    color: #495443 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 4 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+  }
+
+  /* Reviews: exactly one card in the viewport, without a clipped next card. */
+  .rev-inner {
+    overflow: hidden !important;
+  }
+
+  .rev-grid {
+    width: calc(100% - 64px) !important;
+    margin: 0 32px !important;
+    padding: 0 0 24px !important;
+    gap: 12px !important;
+    scroll-padding-inline: 0 !important;
+    align-items: flex-start !important;
+  }
+
+  .rev-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    scroll-snap-align: start !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 16px !important;
+    gap: 16px !important;
+    border-radius: 24px !important;
+    align-self: flex-start !important;
+  }
+
+  .rev-card-photo {
+    width: 100% !important;
+    margin: 0 !important;
+    aspect-ratio: 16 / 9 !important;
+    border-radius: 16px !important;
+  }
+
+  .rev-card-photo img {
+    border-radius: 16px !important;
+  }
+
+  .rev-quote {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: .86rem !important;
+    line-height: 1.48 !important;
+  }
+
+  .rev-meta {
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 12px !important;
+  }
+
+  .rev-rating { display: none !important; }
+
+  .rev-head {
+    padding-bottom: 20px !important;
+  }
+
+  /* FAQ: draw the plus geometrically so font metrics cannot offset it. */
+  .faq2-plus {
+    position: relative !important;
+    display: block !important;
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+
+  .faq2-plus::before,
+  .faq2-plus::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    background: currentColor;
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+  }
+
+  .faq2-plus::before { width: 10px; height: 1.5px; }
+  .faq2-plus::after  { width: 1.5px; height: 10px; }
+}
+/* ── END FRAMEO MOBILE FINAL LAYOUT FIX ── */
+
+
+/* Generated customer portraits for review avatars. */
+.rev-avatar {
+  width: 48px !important;
+  height: 48px !important;
+  flex: 0 0 48px !important;
+  border-radius: 50% !important;
+  background-image: url('../images/review-avatars-v1.png') !important;
+  background-size: 400% auto !important;
+  background-repeat: no-repeat !important;
+  background-color: #D9C8AA !important;
+  overflow: hidden !important;
+}
+.rev-avatar svg,
+.rev-avatar img { display: none !important; }
+.rev-card:nth-child(1)  .rev-avatar { background-position: 33.333% 10% !important; }
+.rev-card:nth-child(2)  .rev-avatar { background-position: 0 90% !important; }
+.rev-card:nth-child(3)  .rev-avatar { background-position: 0 10% !important; }
+.rev-card:nth-child(4)  .rev-avatar { background-position: 100% 10% !important; }
+.rev-card:nth-child(5)  .rev-avatar { background-position: 66.667% 10% !important; }
+.rev-card:nth-child(6)  .rev-avatar { background-position: 66.667% 90% !important; }
+.rev-card:nth-child(7)  .rev-avatar { background-position: 33.333% 10% !important; }
+.rev-card:nth-child(8)  .rev-avatar { background-position: 100% 90% !important; }
+.rev-card:nth-child(9)  .rev-avatar { background-position: 0 90% !important; }
+.rev-card:nth-child(10) .rev-avatar { background-position: 100% 10% !important; }
+
+/* Ratings are intentionally removed in every responsive layout. */
+.rev-rating { display: none !important; }
+
+
+/* ── FRAMEO MOBILE HEADER + MENU ── */
+@media (max-width: 768px) {
+  header#hdr {
+    transition: background-color .28s ease, backdrop-filter .28s ease,
+      border-color .28s ease, box-shadow .28s ease !important;
+  }
+
+  header#hdr.scrolled {
+    background: rgba(13, 26, 11, .72) !important;
+    backdrop-filter: blur(18px) saturate(145%) !important;
+    -webkit-backdrop-filter: blur(18px) saturate(145%) !important;
+    border-bottom: 1px solid rgba(255,255,255,.12) !important;
+    box-shadow: 0 10px 28px rgba(8,16,7,.16) !important;
+  }
+
+  header#hdr.scrolled::after {
+    display: none !important;
+  }
+
+  .mob-menu a {
+    font-family: 'Bebas Neue', sans-serif !important;
+    font-size: 2.2rem !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: .04em !important;
+    text-transform: uppercase !important;
+  }
+}
+/* ── END FRAMEO MOBILE HEADER + MENU ── */
+
+
+/* ── FRAMEO MOBILE GALLERY + CONTACT FINISHING ── */
+.cont3-eyebrow {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  /* Images inside mobile cards use the same restrained corner radius. */
+  .feat-grid-v2 .feat-card-img,
+  .rev-card-photo,
+  .rev-card-photo img {
+    border-radius: 16px !important;
+  }
+
+  /* The gallery is controlled by arrows/swipe; remove the redundant pills. */
+  .ab-dots {
+    display: none !important;
+  }
+
+  .ab-slide-cap {
+    left: 50% !important;
+    right: auto !important;
+    bottom: 14px !important;
+    width: calc(100% - 112px) !important;
+    padding: 0 !important;
+    transform: translateX(-50%) !important;
+    background: none !important;
+    border-radius: 0 !important;
+    text-align: center !important;
+    font-size: .78rem !important;
+    line-height: 1.25 !important;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, .55) !important;
+  }
+
+  .cont3-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .cont3-eyebrow {
+    display: block !important;
+    margin: 0 0 12px !important;
+    font-family: 'Jost', sans-serif !important;
+    font-size: .65rem !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    letter-spacing: .14em !important;
+    text-transform: uppercase !important;
+    color: #8A621E !important;
+  }
+}
+/* ── END FRAMEO MOBILE GALLERY + CONTACT FINISHING ── */
+
+
+/* A narrow desktop preview must keep the scroll-driven hero experience. */
+html.hero-scroll-desktop #hero-scroll-wrapper {
+  height: 550vh !important;
+}
+
+html.hero-scroll-desktop #hero-scroll-wrapper .hero {
+  position: sticky !important;
+  top: 0 !important;
+  height: 100svh !important;
+}
+
+html.hero-scroll-desktop .hero-brand-center {
+  display: flex !important;
+  opacity: 0 !important;
+}
+
+html.hero-scroll-desktop .hero-col-left,
+html.hero-scroll-desktop .hero-col-right {
+  display: flex !important;
+}
+
+html.hero-scroll-desktop .hero-bottom-bar {
+  opacity: 0 !important;
+}
+/* ── END FRAMEO HERO DEVICE MODE FIX ── */
+
+
+/* Keep a clear mobile radius hierarchy: card 24px, nested image 12px. */
+@media (max-width: 768px) {
+  .feat-grid-v2 .feat-card,
+  .rev-card {
+    border-radius: 24px !important;
+  }
+
+  body .feat-grid-v2 img.feat-card-img,
+  .rev-card-photo,
+  body .rev-card .rev-card-photo img {
+    border-radius: 12px !important;
+  }
+
+  .rev-card-photo {
+    overflow: hidden !important;
+  }
+}
+/* ── END FRAMEO MOBILE RADIUS HIERARCHY ── */
+
+
+/* Stabilise the footer layout on desktop and prevent vertical social stacking. */
+.footer-v2-icons {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: nowrap !important;
+}
+
+.footer-v2-logo {
+  width: auto !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  object-position: left center !important;
+}
+/* ── END FRAMEO FOOTER LAYOUT FIX ── */
+
+
+/* ── FRAMEO REVIEW META + FAQ-STYLE CONTROLS ── */
+.rev-avatar {
+  width: 40px !important;
+  height: 40px !important;
+  flex: 0 0 40px !important;
+}
+
+.rev-loc {
+  margin-top: 1.8px !important;
+}
+
+.rev-nav-arrows {
+  gap: 10px !important;
+}
+
+.rev-arr-btn,
+.rev-arr-btn.rev-inactive {
+  width: 30px !important;
+  height: 30px !important;
+  flex: 0 0 30px !important;
+  padding: 0 !important;
+  border: 1.5px solid #8A621E !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: #8A621E !important;
+}
+
+.rev-arr-btn svg {
+  width: 14px !important;
+  height: 14px !important;
+  stroke: currentColor !important;
+}
+
+.rev-arr-btn:hover:not(.rev-inactive) {
+  background: #8A621E !important;
+  color: #FFFFFF !important;
+}
+
+.rev-arr-btn.rev-inactive {
+  opacity: .45 !important;
+}
+/* ── END FRAMEO REVIEW META + FAQ-STYLE CONTROLS ── */
+
+
+/* Contact eyebrow is shared by desktop and mobile. */
+.cont3-eyebrow {
+  display: block !important;
+  margin: 0 0 12px !important;
+  font-family: 'Jost', sans-serif !important;
+  font-size: .72rem !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase !important;
+  color: #8A621E !important;
+}
+
+@media (max-width: 768px) {
+  .cont3-eyebrow {
+    font-size: .65rem !important;
+  }
+}
+/* ── END FRAMEO CONTACT EYEBROW ── */
+
+
+/* Mobile gallery arrows match the compact Reviews controls. */
+@media (max-width: 768px) {
+  .ab-arrow {
+    width: 30px !important;
+    height: 30px !important;
+    padding: 0 !important;
+    border: 1.5px solid #8A621E !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    color: #8A621E !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .ab-arrow svg {
+    width: 14px !important;
+    height: 14px !important;
+    stroke: currentColor !important;
+  }
+
+  .ab-prev { left: 16px !important; }
+  .ab-next { right: 16px !important; }
+}
+/* ── END FRAMEO MOBILE GALLERY CONTROLS ── */
+
+
+/* Filled frosted-glass treatment for mobile gallery controls. */
+@media (max-width: 768px) {
+  .ab-arrow {
+    border: none !important;
+    background: rgba(14, 21, 9, .52) !important;
+    color: #FFFFFF !important;
+    backdrop-filter: blur(12px) saturate(145%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(145%) !important;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .22), inset 0 1px 0 rgba(255, 255, 255, .12) !important;
+  }
+
+  .ab-arrow:hover,
+  .ab-arrow:active {
+    background: rgba(14, 21, 9, .7) !important;
+    color: #FFFFFF !important;
+  }
+}
+/* ── END FRAMEO MOBILE GALLERY GLASS ── */
