@@ -5999,3 +5999,37 @@ html.hero-scroll-desktop .hero-bottom-bar {
   }
 }
 /* ── END FRAMEO MOBILE GALLERY GLASS ── */
+
+
+/* ── FRAMEO MOBILE HERO GAP + REVIEW COPY VISIBILITY FIX ── */
+@media (max-width: 768px) {
+  /* Pull the intro section up to the end of the mobile hero. */
+  #hero-scroll-wrapper {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  #hero-scroll-wrapper + .about-editorial {
+    margin-top: -72px !important;
+    padding-top: 0 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Keep review copy readable above the light card surface. */
+  .rev-card .rev-quote {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: #14190F !important;
+    font-family: 'Jost', sans-serif !important;
+    font-size: .9rem !important;
+    line-height: 1.5 !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 1 !important;
+    transform: none !important;
+  }
+}
+/* ── END MOBILE HERO + REVIEW FIX ── */
